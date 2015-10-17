@@ -2,6 +2,46 @@
 using System.Collections;
 
 public class click_then_move : MonoBehaviour {
+
+    private bool selected = false;
+    private NavMeshAgent agent;
+    private Vector3 MoveTo;
+    private bool move = false;
+
+    void Start()
+    {
+        agent = gameObject.GetComponent<NavMeshAgent>();
+    }
+
+    void Update()
+    {
+        if (selected && move)
+        {
+            agent.SetDestination(MoveTo);
+            move = false;
+        }
+    }
+
+    void Select(int x)
+    {
+        selected = true;
+        // Debug.Log("Selected");
+    }
+
+    void Deselect(int x)
+    {
+        selected = false;
+        // Debug.Log("Deselected");
+    }
+
+    void Destination(Vector3 d)
+    {
+        MoveTo = d;
+        move = true;
+    }
+
+    /*
+    // Old Script
 	private NavMeshAgent agent;
 	void Start() {
 		agent = GetComponent<NavMeshAgent>();
@@ -15,4 +55,5 @@ public class click_then_move : MonoBehaviour {
 			
 		}
 	}
+    */
 }

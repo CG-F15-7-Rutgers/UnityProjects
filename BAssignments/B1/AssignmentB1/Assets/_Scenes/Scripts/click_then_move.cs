@@ -8,9 +8,13 @@ public class click_then_move : MonoBehaviour {
     private Vector3 MoveTo;
     private bool move = false;
 
+    public Material normalColor;
+    public Material selectedColor;
+
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        gameObject.GetComponent<Renderer>().material = normalColor;
     }
 
     void Update()
@@ -20,21 +24,19 @@ public class click_then_move : MonoBehaviour {
             agent.SetDestination(MoveTo);
             move = false;
         }
-        if (selected)
-        {
-           // gameObject.GetComponent<Renderer>.material.color = Color.white;
-        }
     }
 
     void Select(int x)
     {
         selected = true;
+        gameObject.GetComponent<Renderer>().material = selectedColor;
         // Debug.Log("Selected");
     }
 
     void Deselect(int x)
     {
         selected = false;
+        gameObject.GetComponent<Renderer>().material = normalColor;
         // Debug.Log("Deselected");
     }
 

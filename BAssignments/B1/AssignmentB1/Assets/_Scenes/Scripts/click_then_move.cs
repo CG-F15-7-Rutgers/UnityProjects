@@ -20,6 +20,10 @@ public class click_then_move : MonoBehaviour {
             agent.SetDestination(MoveTo);
             move = false;
         }
+        if (selected)
+        {
+           // gameObject.GetComponent<Renderer>.material.color = Color.white;
+        }
     }
 
     void Select(int x)

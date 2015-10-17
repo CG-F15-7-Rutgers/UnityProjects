@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 
 public class Director : MonoBehaviour {
 
-    //private List<GameObject> selectedUnits;
+    private List<GameObject> selectedUnits = new List<GameObject>();
     private GameObject selectedUnit;
 
     void Update()
@@ -15,18 +15,35 @@ public class Director : MonoBehaviour {
         {
             if (hit.transform.tag == "Agent" && Input.GetMouseButtonDown(0))
             {
-                //selectedUnits.Add(hit.transform.gameObject);
                 selectedUnit = hit.transform.gameObject;
-                selectedUnit.SendMessage("Select", 1);
+                if (selectedUnits.Contains(selectedUnit))
+                {
+                    selectedUnit.SendMessage("Deselect", 1);
+                    selectedUnits.Remove(selectedUnit);
+                }
+                else
+                {
+                    selectedUnit.SendMessage("Select", 1);
+                    selectedUnits.Add(selectedUnit);
+                }
             }
-            if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(0))
             {
-                selectedUnit.SendMessage("Destination", hit.point);
+                foreach (GameObject g in selectedUnits)
+                {
+                    g.SendMessage("Destination", hit.point);
+                }
             }
+            /*
             if (hit.transform.tag == "Ground" && Input.GetMouseButtonDown(0))
             {
-                selectedUnit.SendMessage("Deselect", 1);
+                foreach (GameObject g in selectedUnits)
+                {
+                    g.SendMessage("Deselect", 1);
+                }
+                selectedUnits.Clear();
             }
+            */
         }
     }
 

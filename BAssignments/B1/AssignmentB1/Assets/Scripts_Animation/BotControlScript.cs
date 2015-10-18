@@ -26,7 +26,8 @@ public class BotControlScript : MonoBehaviour
 	
 	static int idleState = Animator.StringToHash("Base Layer.Idle");
 	static int JumpFromStillState = Animator.StringToHash("Base Layer.JumpFromStill");
-	static int locoState = Animator.StringToHash("Base Layer.Locomotion");			// these integers are references to our animator's states
+	static int locoState = Animator.StringToHash("Base Layer.Locomotion");
+	static int RunState = Animator.StringToHash("Base Layer.Run");			// these integers are references to our animator's states
 	static int jumpState = Animator.StringToHash("Base Layer.Jump");				// and are used to check state for various actions to occur
 	static int jumpDownState = Animator.StringToHash("Base Layer.JumpDown");		// within our FixedUpdate() function below
 	static int fallState = Animator.StringToHash("Base Layer.Fall");
@@ -87,6 +88,37 @@ public class BotControlScript : MonoBehaviour
 			{
 				anim.SetBool("Jump", true);
 			}
+			if(Input.GetButtonDown("ALTLEFT"))
+			{
+				
+				anim.SetBool("Run", true);
+				
+			}
+		}
+		else if (currentBaseState.nameHash == RunState)
+		{
+			/*if (Input.GetButtonDown("ALTLEFT"))
+			{
+				
+				anim.SetBool("Run", true);
+
+			} */
+			/*else {
+
+					anim.SetBool("Run", false);
+			} */
+
+
+
+			if(Input.GetKey(KeyCode.W)){	
+				//animation.Play(); 
+				anim.SetBool("Run", true);
+			}
+			else if(Input.GetKeyUp(KeyCode.W)){	
+				//animation.Stop(); 
+				anim.SetBool("Run", false);
+			}
+			
 		}
 		/*else if (currentBaseState.nameHash == idleState)
 		{
@@ -109,6 +141,7 @@ public class BotControlScript : MonoBehaviour
 				
 				// reset the Jump bool so we can jump again, and so that the state does not loop 
 				anim.SetBool("Jump", false);
+
 			}
 			
 			// Raycast down from the center of the character.. 
@@ -134,7 +167,7 @@ public class BotControlScript : MonoBehaviour
 		
 		// if we are jumping down, set our Collider's Y position to the float curve from the animation clip - 
 		// this is a slight lowering so that the collider hits the floor as the character extends his legs
-		else if (currentBaseState.nameHash == jumpDownState)
+	/*	else if (currentBaseState.nameHash == jumpDownState)
 		{
 			col.center = new Vector3(0, anim.GetFloat("ColliderY"), 0);
 		}
@@ -161,7 +194,7 @@ public class BotControlScript : MonoBehaviour
 				col.center = new Vector3(0, anim.GetFloat("ColliderY"), 0);
 				
 			}
-		}
+		} */
 		// IDLE
 		
 		// check if we are at idle, if so, let us Wave!

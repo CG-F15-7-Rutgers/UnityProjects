@@ -62,7 +62,16 @@ public class BotControlScript : MonoBehaviour
 		
 		if(anim.layerCount ==2)		
 			layer2CurrentState = anim.GetCurrentAnimatorStateInfo(1);	// set our layer2CurrentState variable to the current state of the second Layer (1) of animation
-		
+
+
+
+
+		if (Input.GetKey(KeyCode.LeftShift)) {
+			anim.SetBool("Run", true);
+		}
+		else {
+			anim.SetBool("Run", false);
+		}
 		
 		// LOOK AT ENEMY
 		
@@ -110,14 +119,17 @@ public class BotControlScript : MonoBehaviour
 
 
 
-			if(Input.GetKey(KeyCode.W)){	
+		/*	if(!anim.IsInTransition(0))
+			{	
+				if(Input.GetKey(KeyCode.W)){	
 				//animation.Play(); 
 				anim.SetBool("Run", true);
-			}
-			else if(Input.GetKeyUp(KeyCode.W)){	
+				}
+				 if(Input.GetKeyUp(KeyCode.W)){	
 				//animation.Stop(); 
 				anim.SetBool("Run", false);
 			}
+			} */
 			
 		}
 		/*else if (currentBaseState.nameHash == idleState)

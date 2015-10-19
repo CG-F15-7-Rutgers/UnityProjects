@@ -52,6 +52,15 @@ public class move_robot : MonoBehaviour
             run = false;
         }
 
+        if (agent.isOnOffMeshLink && walking)
+        {
+            anim.SetBool("Jump", true);
+        }
+        else
+        {
+            anim.SetBool("Jump", false);
+        }
+
     }
 
     /*

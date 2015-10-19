@@ -1,1 +1,0 @@
-to add all the scenes in the build settings that way the tranistion script can recongize them.

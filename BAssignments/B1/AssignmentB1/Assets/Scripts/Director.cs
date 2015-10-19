@@ -6,6 +6,8 @@ public class Director : MonoBehaviour {
 
     private List<GameObject> selectedUnits = new List<GameObject>();
     private GameObject selectedUnit;
+    private float lastClickTime;
+    public float catchTime = 0.25f;
 
     void Update()
     {
@@ -29,6 +31,15 @@ public class Director : MonoBehaviour {
             }
             else if (Input.GetMouseButtonDown(0))
             {
+                if (Time.time - lastClickTime < catchTime)
+                {
+                    //double click
+                    foreach (GameObject g in selectedUnits)
+                    {
+                        g.SendMessage("DoubleClick", 1);
+                    }
+                }
+                lastClickTime = Time.time;
                 foreach (GameObject g in selectedUnits)
                 {
                     g.SendMessage("Destination", hit.point);

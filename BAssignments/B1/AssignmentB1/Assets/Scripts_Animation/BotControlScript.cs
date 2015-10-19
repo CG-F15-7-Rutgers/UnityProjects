@@ -74,11 +74,11 @@ public class BotControlScript : MonoBehaviour
 		}
 
 
-		
-		if (Input.GetKeyDown ("a")) {
+		/*
+		if (Input.GetKeyDown ("a")){
 			anim.Play("Jump_Still",-1,0f);
 		}
-
+*/
 		
 		
 		
@@ -119,9 +119,12 @@ public class BotControlScript : MonoBehaviour
 				
 			}
 		}
-		else if (currentBaseState.nameHash == idleState)
+		else if (currentBaseState.nameHash == RunState)
 		{
-
+			if(Input.GetButtonDown("Jump"))
+			{
+				anim.SetBool("Jump", true);
+			}
 			/*else {
 
 					anim.SetBool("Run", false);

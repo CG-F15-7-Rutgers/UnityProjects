@@ -25,10 +25,11 @@ public class BotControlScript : MonoBehaviour
 	
 	
 	static int idleState = Animator.StringToHash("Base Layer.Idle");
-	static int JumpFromStillState = Animator.StringToHash("Base Layer.JumpFromStill");
+	//static int JumpFromStillState = Animator.StringToHash("Base Layer.JumpFromStill");
 	static int locoState = Animator.StringToHash("Base Layer.Locomotion");
 	static int RunState = Animator.StringToHash("Base Layer.Run");			// these integers are references to our animator's states
-	static int jumpState = Animator.StringToHash("Base Layer.Jump");				// and are used to check state for various actions to occur
+	static int jumpState = Animator.StringToHash("Base Layer.Jump");			// these integers are references to our animator's states
+	static int jumpStateStill = Animator.StringToHash("Base Layer.JumpFromStill");				// and are used to check state for various actions to occur
 	static int jumpDownState = Animator.StringToHash("Base Layer.JumpDown");		// within our FixedUpdate() function below
 	static int fallState = Animator.StringToHash("Base Layer.Fall");
 	static int rollState = Animator.StringToHash("Base Layer.Roll");
@@ -65,14 +66,28 @@ public class BotControlScript : MonoBehaviour
 
 
 
-
 		if (Input.GetKey(KeyCode.LeftShift)) {
 			anim.SetBool("Run", true);
 		}
 		else {
 			anim.SetBool("Run", false);
 		}
+
+
 		
+		if (Input.GetKeyDown ("a")) {
+			anim.Play("Jump_Still",-1,0f);
+		}
+
+		
+		
+		
+	/*	if (Input.GetKey (KeyCode.Space)) {
+			anim.SetBool ("Jump", true);
+		} else {
+			anim.SetBool("Jump", false);
+		} */
+
 		// LOOK AT ENEMY
 		
 		// if we hold Alt..
@@ -104,33 +119,15 @@ public class BotControlScript : MonoBehaviour
 				
 			}
 		}
-		else if (currentBaseState.nameHash == RunState)
+		else if (currentBaseState.nameHash == idleState)
 		{
-			/*if (Input.GetButtonDown("ALTLEFT"))
-			{
-				
-				anim.SetBool("Run", true);
 
-			} */
 			/*else {
 
 					anim.SetBool("Run", false);
 			} */
 
 
-
-		/*	if(!anim.IsInTransition(0))
-			{	
-				if(Input.GetKey(KeyCode.W)){	
-				//animation.Play(); 
-				anim.SetBool("Run", true);
-				}
-				 if(Input.GetKeyUp(KeyCode.W)){	
-				//animation.Stop(); 
-				anim.SetBool("Run", false);
-			}
-			} */
-			
 		}
 		/*else if (currentBaseState.nameHash == idleState)
 		{
@@ -153,7 +150,7 @@ public class BotControlScript : MonoBehaviour
 				
 				// reset the Jump bool so we can jump again, and so that the state does not loop 
 				anim.SetBool("Jump", false);
-
+				
 			}
 			
 			// Raycast down from the center of the character.. 
@@ -173,6 +170,7 @@ public class BotControlScript : MonoBehaviour
 				}
 			}
 		}
+
 
 		
 		// JUMP DOWN AND ROLL 
@@ -213,12 +211,19 @@ public class BotControlScript : MonoBehaviour
 		else if (currentBaseState.nameHash == idleState)
 		{
 
-			if(Input.GetButtonDown("Jump"))
+			/*if(Input.GetButtonDown("Jump"))
 			{
 				anim.SetBool("Jump", true);
 			}
+*/
 
 
+			if (Input.GetKey (KeyCode.Space)) {
+				anim.SetBool ("Jump", true);
+			} 
+			//else {
+			//	anim.SetBool("Jump", false);
+			//}
 			/*if(Input.GetButtonUp("Jump"))
 			{
 				anim.SetBool("Wave", true);

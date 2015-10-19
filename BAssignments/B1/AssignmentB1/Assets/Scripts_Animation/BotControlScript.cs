@@ -75,7 +75,7 @@ public class BotControlScript : MonoBehaviour
 
 
 		
-		if (Input.GetKeyDown ("1")) {
+		if (Input.GetKeyDown ("a")) {
 			anim.Play("Jump_Still",-1,0f);
 		}
 

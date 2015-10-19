@@ -15,19 +15,19 @@ public class keyboardcontrol : MonoBehaviour {
 
 	void Update()
 	{
-		if(Input.GetKey(KeyCode.RightArrow))
+		if(Input.GetKey("d"))
 		{
 			transform.Translate(new Vector3(5 * Time.deltaTime,0,0));
 		}
-		if(Input.GetKey(KeyCode.LeftArrow))
+		if(Input.GetKey("a"))
 		{
 			transform.Translate(new Vector3(-5 * Time.deltaTime,0,0));
 		}
-		if(Input.GetKey(KeyCode.DownArrow))
+		if(Input.GetKey("s"))
 		{
 			transform.Translate(new Vector3(0,-5 * Time.deltaTime,0));
 		}
-		if(Input.GetKey(KeyCode.UpArrow))
+		if(Input.GetKey("w"))
 		{
 			transform.Translate(new Vector3(0,5 * Time.deltaTime,0));
 		}

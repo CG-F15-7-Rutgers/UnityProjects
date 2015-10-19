@@ -24,7 +24,7 @@ public class move_robot : MonoBehaviour
         if (selected && move)
         {
             agent.SetDestination(MoveTo);
-            anim.SetFloat("Speed", 1);
+            anim.SetFloat("Speed", 0.25f);
             move = false;
             walking = true;
         }

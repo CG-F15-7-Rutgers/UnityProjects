@@ -1,6 +1,6 @@
 #Group Name
 ######Unity Projects - CG Fall 2015 @ Rutgers
-######By: *[Walter Hummel], [Ciera Jones], [Lucas Rivera]*
+######By: *Walter Hummel, Ciera Jones, Lucas Rivera*
 Check out our blog: [Computer Graphics Fall 2015's 1 Blog](http://cgf15.blogspot.com/ "The primiar blog for Computer Graphics")
 
 ![alt text](teamLogo.png)
